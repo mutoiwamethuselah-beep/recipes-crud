@@ -1,0 +1,48 @@
+{
+  "info": {
+    "name": "Recipes CRUD API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" },
+    { "key": "id", "value": "1" }
+  ],
+  "item": [
+    {
+      "name": "GET all recipes",
+      "request": { "method": "GET", "url": "{{baseUrl}}/api/recipes" }
+    },
+    {
+      "name": "GET one recipe",
+      "request": { "method": "GET", "url": "{{baseUrl}}/api/recipes/{{id}}" }
+    },
+    {
+      "name": "POST create recipe",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Sweet Potato Fritters\",\n  \"category\": \"Snack\",\n  \"ingredients\": \"Sweet potato, flour, egg, cinnamon, oil\",\n  \"instructions\": \"Grate potato, mix with other ingredients, fry spoonfuls until golden.\",\n  \"prep_time_minutes\": 25,\n  \"servings\": 4\n}"
+        },
+        "url": "{{baseUrl}}/api/recipes"
+      }
+    },
+    {
+      "name": "PUT update recipe",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Sweet Potato Fritters (Updated)\",\n  \"category\": \"Breakfast\",\n  \"ingredients\": \"Sweet potato, flour, egg, cinnamon, oil, honey\",\n  \"instructions\": \"Grate potato, mix, fry until golden, drizzle with honey.\",\n  \"prep_time_minutes\": 30,\n  \"servings\": 4\n}"
+        },
+        "url": "{{baseUrl}}/api/recipes/{{id}}"
+      }
+    },
+    {
+      "name": "DELETE recipe",
+      "request": { "method": "DELETE", "url": "{{baseUrl}}/api/recipes/{{id}}" }
+    }
+  ]
+}
